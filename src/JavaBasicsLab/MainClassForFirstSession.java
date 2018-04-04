@@ -24,23 +24,23 @@ public class MainClassForFirstSession {
 //        printArray(vector3);
 //        findMaxIntNumber(vector3);
 
-//        int[] array = {1, 2, 3, 4, 5, 6, 8, 9, 10, 13, 15, 18, 19, 20, 23, 25, 26, 28, 30, 34, 35, 36, 38, 39, 40};
+        int[] array = {1, 3, 4, 5, 6, 7};//, 8, 9, 10 , 13, 15, 18, 19, 20, 23, 25, 26, 28, 30, 34, 35, 36, 38, 39, 40};
 
-        int[] array = createRandomOrderedNumbers(4000, 4100);
+//        int[] array = createRandomOrderedNumbers(4000, 4100);
 //        printArray(array);
 
         long startTime = System.nanoTime();
-        twoNumbersEqualX1(array, 3700);
+        twoNumbersEqualX1(array, 37);
         long endTime = System.nanoTime();
         long duration1 = (endTime - startTime);
 
         long startTime2 = System.nanoTime();
-        twoNumbersEqualX2v2(array, 3700);
+        twoNumbersEqualX2v2(array, 37);
         long endTime2 = System.nanoTime();
         long duration2 = (endTime2 - startTime2);
 
         long startTime3 = System.nanoTime();
-        twoNumbersEqualX3(array, 3700);
+        twoNumbersEqualX3(array, 37);
         long endTime3 = System.nanoTime();
         long duration3 = (endTime3 - startTime3);
 
@@ -245,22 +245,37 @@ public class MainClassForFirstSession {
         return false;
     }
 
-    private static int[] gasesteNumar2(int[] arr, int numarCeTrebuieCautat){
-        int length = arr.length/2;
-        if(numarCeTrebuieCautat < arr[length])
-        {
-            int[] arrToBeReturned = new int[length];
-            System.arraycopy(arr, 0, arrToBeReturned, 0, length);
-            return arrToBeReturned;
-        } else if (numarCeTrebuieCautat > arr[length]){
-            int[] arrToBeReturned = new int[length];
-            System.arraycopy(arr, length , arrToBeReturned, 0, length);
-            return arrToBeReturned;
-        } else {
-            int[] result = new int[1];
-            result[0] = numarCeTrebuieCautat;
-            return result;
+    private static int gasesteNumar2(int[] arr, int start, int stop, int numarCeTrebuieCautat) {
+
+//        int length = arr.length / 2;
+//        length = length+1;
+//        int[] result;
+//        if (numarCeTrebuieCautat < arr[length]) {
+//            int[] arrToBeReturned = new int[length];
+//            System.arraycopy(arr, 0, arrToBeReturned, 0, length);
+//            gasesteNumar2(arrToBeReturned, numarCeTrebuieCautat);
+//        } else if (numarCeTrebuieCautat > arr[length]) {
+//            int[] arrToBeReturned = new int[length];
+//            System.arraycopy(arr, length-1, arrToBeReturned, 0, length-1);
+//            gasesteNumar2(arrToBeReturned, numarCeTrebuieCautat);
+//        }
+//        result = new int[1];
+//        result[0] = numarCeTrebuieCautat;
+//        return result;
+
+        if (stop >= start) {
+
+            int mid = start + stop/2;
+
+            if (mid == numarCeTrebuieCautat) return mid;
+
+            if (arr[mid] > numarCeTrebuieCautat){
+                gasesteNumar2(arr, start, mid-1, numarCeTrebuieCautat);
+            }
+
+            gasesteNumar2(arr, mid+1, stop, numarCeTrebuieCautat);
         }
+        return -arr.length;
     }
 
     private static boolean twoNumbersEqualX2(int[] arr, int sumaDorita) {
@@ -276,12 +291,8 @@ public class MainClassForFirstSession {
             int numarCeTrebuieCautat;
             for (int i : arr) {
                 numarCeTrebuieCautat = sumaDorita - i;
-                int[] searchArray = arr;
-                do{
-                    searchArray = gasesteNumar2(searchArray, numarCeTrebuieCautat);
-                }
-                while ( searchArray.length > 1);
-                if(searchArray[0] == numarCeTrebuieCautat){
+                int searchArray = gasesteNumar2(arr, 0, arr.length-1, numarCeTrebuieCautat);
+                if(searchArray == numarCeTrebuieCautat){
                     return true;
                 }
 
