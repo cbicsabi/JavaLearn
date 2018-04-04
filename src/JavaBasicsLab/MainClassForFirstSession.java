@@ -1,5 +1,8 @@
 package JavaBasicsLab;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import static java.lang.Math.pow;
 
 public class MainClassForFirstSession {
@@ -21,21 +24,23 @@ public class MainClassForFirstSession {
 //        printArray(vector3);
 //        findMaxIntNumber(vector3);
 
+//        int[] array = {1, 2, 3, 4, 5, 6, 8, 9, 10, 13, 15, 18, 19, 20, 23, 25, 26, 28, 30, 34, 35, 36, 38, 39, 40};
 
-        int[] array = {1, 2, 3, 4, 5, 6, 8, 9, 10, 13, 15, 18, 19, 20, 23, 25, 26, 28, 30, 34, 35, 36, 38, 39, 40};
+        int[] array = createRandomOrderedNumbers(4000, 4100);
+//        printArray(array);
 
         long startTime = System.nanoTime();
-        twoNumbersEqualX1(array, 37);
+        twoNumbersEqualX1(array, 3700);
         long endTime = System.nanoTime();
         long duration1 = (endTime - startTime);
 
         long startTime2 = System.nanoTime();
-        twoNumbersEqualX2(array, 37);
+        twoNumbersEqualX2v2(array, 3700);
         long endTime2 = System.nanoTime();
         long duration2 = (endTime2 - startTime2);
 
         long startTime3 = System.nanoTime();
-        twoNumbersEqualX3(array, 37);
+        twoNumbersEqualX3(array, 3700);
         long endTime3 = System.nanoTime();
         long duration3 = (endTime3 - startTime3);
 
@@ -240,6 +245,24 @@ public class MainClassForFirstSession {
         return false;
     }
 
+    private static int[] gasesteNumar2(int[] arr, int numarCeTrebuieCautat){
+        int length = arr.length/2;
+        if(numarCeTrebuieCautat < arr[length])
+        {
+            int[] arrToBeReturned = new int[length];
+            System.arraycopy(arr, 0, arrToBeReturned, 0, length);
+            return arrToBeReturned;
+        } else if (numarCeTrebuieCautat > arr[length]){
+            int[] arrToBeReturned = new int[length];
+            System.arraycopy(arr, length , arrToBeReturned, 0, length);
+            return arrToBeReturned;
+        } else {
+            int[] result = new int[1];
+            result[0] = numarCeTrebuieCautat;
+            return result;
+        }
+    }
+
     private static boolean twoNumbersEqualX2(int[] arr, int sumaDorita) {
         int numarCeTrebuieCautat;
         for (int i : arr) {
@@ -248,6 +271,23 @@ public class MainClassForFirstSession {
         }
         return false;
     }
+
+    private static boolean twoNumbersEqualX2v2(int[] arr, int sumaDorita) {
+            int numarCeTrebuieCautat;
+            for (int i : arr) {
+                numarCeTrebuieCautat = sumaDorita - i;
+                int[] searchArray = arr;
+                do{
+                    searchArray = gasesteNumar2(searchArray, numarCeTrebuieCautat);
+                }
+                while ( searchArray.length > 1);
+                if(searchArray[0] == numarCeTrebuieCautat){
+                    return true;
+                }
+
+            }
+            return false;
+        }
 
     private static boolean twoNumbersEqualX3(int[] arr, int sumaDorita) {
         int sumaCurenta;
@@ -268,4 +308,25 @@ public class MainClassForFirstSession {
         }
         return false;
     }
+
+    // Method returns a random array of your desired size and your desired range.
+    // I don't recommend trying to understand how this method works :)
+    // But if you want to, go for it!
+    public static int[] createRandomOrderedNumbers(int size, int range) {
+        if(size > range) {
+            System.out.println("ERROR, you cannot create an array of length " + size + " with random unique numbers between 0-"+ range);
+            return new int[1];
+        }
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        Random r = new Random();
+        while (numbers.size() < size) {
+            int nextRandom = r.nextInt(range);
+            if (!numbers.contains(nextRandom)) {
+                numbers.add(nextRandom);
+            }
+        }
+        return numbers.stream().sorted().mapToInt(i -> i).toArray();
+
+    }
+
 }
