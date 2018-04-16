@@ -1,4 +1,6 @@
-package JavaBasicsLab;
+package JavaBasicsLab.S04;
+
+import JavaBasicsLab.S04.Caine;
 
 public class MainClassSession4 {
     public static void main(String[] args) {

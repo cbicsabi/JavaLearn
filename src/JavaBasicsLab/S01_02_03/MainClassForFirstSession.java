@@ -1,4 +1,4 @@
-package JavaBasicsLab;
+package JavaBasicsLab.S01_02_03;
 
 import java.util.ArrayList;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package JavaBasicsLab;
+package JavaBasicsLab.S04;
 
 public class CabinetVeterinar {
     Caine[] registruCaini = new Caine[100];

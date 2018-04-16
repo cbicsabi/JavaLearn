@@ -1,4 +1,4 @@
-package JavaBasicsLab.SessionFourHomework;
+package JavaBasicsLab.S04.Homework;
 
 public class ShopItem {
     private String category;
