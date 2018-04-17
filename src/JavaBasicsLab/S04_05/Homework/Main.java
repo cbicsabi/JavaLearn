@@ -1,4 +1,4 @@
-package JavaBasicsLab.S04.Homework;
+package JavaBasicsLab.S04_05.Homework;
 
 public class Main {
     public static void main(String[] args) {

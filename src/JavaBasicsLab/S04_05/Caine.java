@@ -1,4 +1,4 @@
-package JavaBasicsLab.S04;
+package JavaBasicsLab.S04_05;
 
 public class Caine {
     private String rasa;

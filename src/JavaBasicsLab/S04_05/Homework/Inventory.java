@@ -1,4 +1,4 @@
-package JavaBasicsLab.S04.Homework;
+package JavaBasicsLab.S04_05.Homework;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
