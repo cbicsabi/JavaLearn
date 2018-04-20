@@ -15,7 +15,7 @@ public class Main {
         magazin1.addToStock(ouaDePrepelita, -3);
         magazin1.addToStock(ouaDePrepelita, 6);
         magazin1.printStock();
-        //magazin1.purgeFromStock(ouaDePrepelita);
+        magazin1.purgeFromStock(ouaDePrepelita);
         magazin1.addToStock(carneDeVita, 10);
         magazin1.addToStock(zahar, 23);
         System.out.println(magazin1.isInStock(ouaDePrepelita));

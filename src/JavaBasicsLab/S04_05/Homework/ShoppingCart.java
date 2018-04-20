@@ -1,6 +1,10 @@
 package JavaBasicsLab.S04_05.Homework;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Map;
+
+import static java.lang.Math.round;
 
 public class ShoppingCart extends Inventory {
     private Inventory inventory;
@@ -17,7 +21,11 @@ public class ShoppingCart extends Inventory {
         for (Map.Entry<ShopItem, Integer> entry : stock.entrySet()) {
             pretTotal += entry.getKey().getPrice() * entry.getValue();
         }
-        return pretTotal;
+        //TODO why doesn't it return rounded value to the second decimal???
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.CEILING);
+        double rounded = Double.parseDouble(df.format(pretTotal));
+        return rounded;
     }
 
     public void buyShoppingCart(){
