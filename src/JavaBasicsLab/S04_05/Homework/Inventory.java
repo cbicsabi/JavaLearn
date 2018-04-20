@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Inventory {
     private String name;
-    private Map<ShopItem, Integer> stock = new LinkedHashMap<>();
+    protected Map<ShopItem, Integer> stock = new LinkedHashMap<>();
 
     public String getName() {
         return name;
@@ -18,6 +18,7 @@ public class Inventory {
 
     public Inventory(String name) {
         this.name = name;
+
     }
 
     public void addToStock(ShopItem si, int amount) {
@@ -48,7 +49,7 @@ public class Inventory {
 
 
     public void purgeFromStock(ShopItem si){
-        if(isInStock(si) && areYouSureValidation("PURGE", si)) {
+        if(isInStock(si) ){ //&& areYouSureValidation("PURGE", si)) {
             stock.remove(si);
         } else {
             System.out.println("Shop Item not in stock.");

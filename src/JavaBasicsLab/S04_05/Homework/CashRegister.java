@@ -27,11 +27,15 @@ public class CashRegister {
         this.currency = currency;
     }
 
-    public double getAvailableAmount() {
+    protected double getAvailableAmount() {
         return availableAmount;
     }
 
-    public void sellShopItems() {
-        //TODO
+    protected void creditAvailableAmount(double amount) {
+        this.availableAmount += amount;
+    }
+
+    public void debitAvailableAmount(double amount) {
+        this.availableAmount -= amount;
     }
 }
