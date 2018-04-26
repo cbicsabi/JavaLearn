@@ -1,4 +1,4 @@
-package JavaBasicsLab.S04_05.Homework;
+package JavaBasicsLab.S04_05_S06.Homework;
 
 public class CashRegister {
     private String name;

@@ -1,4 +1,4 @@
-package JavaBasicsLab.S04_05;
+package JavaBasicsLab.S04_05_S06;
 
 public class MainClassSession4 {
     public static void main(String[] args) {

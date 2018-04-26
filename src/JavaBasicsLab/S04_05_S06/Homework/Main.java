@@ -1,4 +1,4 @@
-package JavaBasicsLab.S04_05.Homework;
+package JavaBasicsLab.S04_05_S06.Homework;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,12 +27,9 @@ public class Main {
         magazin1.removeFromStock(zahar, 2);
 
 
-        cos.addToStock(ouaDeGaina, 300);
+        cos.addToStock(ouaDeGaina, 3);
         System.out.println(cos.returnTotalPrice());
         cos.buyShoppingCart();
-
-        System.out.println("Cos:");
-        cos.printStock();
 
         System.out.println("Magazin:");
         magazin1.printStock();

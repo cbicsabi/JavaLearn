@@ -1,4 +1,4 @@
-package JavaBasicsLab.S04_05.Homework;
+package JavaBasicsLab.S04_05_S06.Homework;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -25,16 +25,16 @@ public class ShoppingCart extends Inventory {
         DecimalFormat df = new DecimalFormat("#.##");
         df.setRoundingMode(RoundingMode.CEILING);
         double rounded = Double.parseDouble(df.format(pretTotal));
-        return rounded;
+        return pretTotal;
     }
 
     public void buyShoppingCart(){
         for (Map.Entry<ShopItem, Integer> entry : stock.entrySet()) {
-            if (inventory.isInStock(entry.getKey())){
-                inventory.removeFromStock(entry.getKey(), entry.getValue());
-                if (!(inventory.stock.get(entry.getKey()) < entry.getValue())){
-                    cashRegister.creditAvailableAmount(entry.getKey().getPrice() * entry.getValue());
-                    inventory.purgeFromStock(entry.getKey());
+            if (this.inventory.isInStock(entry.getKey())){
+                this.inventory.removeFromStock(entry.getKey(), entry.getValue());
+                if (!(this.inventory.stock.get(entry.getKey()) < entry.getValue())){
+                    this.cashRegister.creditAvailableAmount(entry.getKey().getPrice() * entry.getValue());
+                    this.stock.remove(entry.getKey());
                 }
             }
         }
